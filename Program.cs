@@ -24,23 +24,15 @@ namespace Stack_and_queue_Problems
             head = newNode;
         }
 
-        public void Insert(int data, int position)
+        public int Pop()
         {
-            Node newNode = new Node(data);
-            if (position == 0)
+            if (head == null)
             {
-                newNode.next = head;
-                head = newNode;
-                return;
+                throw new Exception("Linked list is empty");
             }
-
-            Node current = head;
-            for (int i = 0; i < position - 1; i++)
-            {
-                current = current.next;
-            }
-            newNode.next = current.next;
-            current.next = newNode;
+            int data = head.data;
+            head = head.next;
+            return data;
         }
 
         public void PrintList()
@@ -60,8 +52,10 @@ namespace Stack_and_queue_Problems
         {
             LinkedList linkedList = new LinkedList();
             linkedList.Add(70);
+            linkedList.Add(30);
             linkedList.Add(56);
-            linkedList.Insert(30, 1);
+
+            linkedList.Pop();
 
             Console.WriteLine("Final Sequence: ");
             linkedList.PrintList();
