@@ -1,75 +1,63 @@
 using System;
 namespace Stack_and_queue_Problems
 {
-    class Node
+    public class Node
     {
         public int data;
         public Node next;
-
         public Node(int data)
         {
             this.data = data;
-            next = null;
         }
     }
-
-    class LinkedList
+    public class LLPopFirst
     {
-        public Node head;
-
-        public void Add(int data)
+        Node head;
+        public void insert(int data)  // 56 30 70
         {
-            Node newNode = new Node(data);
-            newNode.next = head;
-            head = newNode;
-        }
-
-        public int PopLast()
-        {
+            Node n = new Node(data);
             if (head == null)
             {
-                throw new Exception("Linked list is empty");
+                head = n;
             }
-            if (head.next == null)
+            else
             {
-                int data = head.data;
-                head = null;
-                return data;
+                n.next = head;
+                head = n;
             }
-            Node current = head;
-            while (current.next.next != null)
-            {
-                current = current.next;
-            }
-            int tailData = current.next.data;
-            current.next = null;
-            return tailData;
         }
 
-        public void PrintList()
+        public void PopFirst()// 56 30 40 70
         {
-            Node current = head;
-            while (current != null)
+            Node t = head;
+            if (t == null)
+            { throw new NullReferenceException("list is empty"); }
+            else
             {
-                Console.Write(current.data + " ");
-                current = current.next;
+                head = t.next;
             }
         }
-    }
 
-    class Program
-    {
-        static void Main(string[] args)
+        public void display()
         {
-            LinkedList linkedList = new LinkedList();
-            linkedList.Add(70);
-            linkedList.Add(30);
-            linkedList.Add(56);
+            Node temp = head;
+            while (temp != null)
+            {
+                Console.Write(temp.data + " ");
+                temp = temp.next;
+            }
+        }
 
-            linkedList.PopLast();
+        static void Main()
+        {
+            LLPopFirst ll = new LLPopFirst();
+            ll.insert(70);
+            ll.insert(40);
+            ll.insert(30);
+            ll.insert(56);
+            ll.PopFirst(); ll.PopFirst(); ll.PopFirst();
+            ll.display();
 
-            Console.WriteLine("Final Sequence: ");
-            linkedList.PrintList();
         }
     }
 }
