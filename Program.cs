@@ -10,7 +10,7 @@ namespace Stack_and_queue_Problems
             this.data = data;
         }
     }
-    public class LLPopFirst
+    public class LLSearch
     {
         Node head;
         public void insert(int data)  // 56 30 70
@@ -26,18 +26,22 @@ namespace Stack_and_queue_Problems
                 head = n;
             }
         }
-
-        public void PopFirst()// 56 30 40 70
+        public void Search(int value)
         {
             Node t = head;
-            if (t == null)
-            { throw new NullReferenceException("list is empty"); }
-            else
+            bool con = false;
+            while (t != null)
             {
-                head = t.next;
+                if (t.data.Equals(value))
+                {
+                    con = true;
+                    Console.WriteLine("{0}is found", value);
+                }
+                t = t.next;
             }
+            if (con == false)
+            { Console.WriteLine("{0}is not found", value); }
         }
-
         public void display()
         {
             Node temp = head;
@@ -50,14 +54,16 @@ namespace Stack_and_queue_Problems
 
         static void Main()
         {
-            LLPopFirst ll = new LLPopFirst();
+            LLSearch ll = new LLSearch();
             ll.insert(70);
-            ll.insert(40);
+            //ll.insert(40);
             ll.insert(30);
             ll.insert(56);
-            ll.PopFirst(); ll.PopFirst(); ll.PopFirst();
+            ll.Search(40);
             ll.display();
+
 
         }
     }
+}
 }
