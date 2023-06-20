@@ -24,20 +24,22 @@ namespace Stack_and_queue_Problems
             head = newNode;
         }
 
-        public void Append(int data)
+        public void Insert(int data, int position)
         {
             Node newNode = new Node(data);
-            if (head == null)
+            if (position == 0)
             {
+                newNode.next = head;
                 head = newNode;
                 return;
             }
 
             Node current = head;
-            while (current.next != null)
+            for (int i = 0; i < position - 1; i++)
             {
                 current = current.next;
             }
+            newNode.next = current.next;
             current.next = newNode;
         }
 
@@ -57,13 +59,12 @@ namespace Stack_and_queue_Problems
         static void Main(string[] args)
         {
             LinkedList linkedList = new LinkedList();
+            linkedList.Add(70);
             linkedList.Add(56);
-            linkedList.Append(30);
-            linkedList.Append(70);
+            linkedList.Insert(30, 1);
 
-            Console.WriteLine("LinkedList Sequence: ");
+            Console.WriteLine("Final Sequence: ");
             linkedList.PrintList();
         }
     }
-
 }
