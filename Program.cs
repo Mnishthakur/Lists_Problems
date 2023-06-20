@@ -57,12 +57,13 @@ namespace Stack_and_queue_Problems
         static void Main(string[] args)
         {
             LinkedList linkedList = new LinkedList();
-            linkedList.Add(70);
-            linkedList.Add(30);
-            linkedList.Append(56);
+            linkedList.Add(56);
+            linkedList.Append(30);
+            linkedList.Append(70);
 
             Console.WriteLine("LinkedList Sequence: ");
             linkedList.PrintList();
         }
     }
+
 }
